@@ -10,7 +10,8 @@ function blockColor() {
 
     $(".time-block").each(function() {
         var currHour = parseInt($(this).attr("id"));
-
+        console.log(hour)
+        console.log(currHour)
         if (currHour > hour) {
             $(this).addClass("future");
         } else if (currHour === hour) {
@@ -21,4 +22,15 @@ function blockColor() {
     })
 };
 
+
+blockColor();
+
+function saveEntry() {
+    var time = $(this).siblings("hour").text;
+    var plan = $(this).siblings("plan").val;
+
+    localStorage.setItem(time, plan);   
+};
+
+document.getElementById(".saveBtn").addEventListener("click", saveEntry);
 
